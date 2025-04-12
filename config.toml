@@ -1,0 +1,20 @@
+[API]
+    ListenPort = "4100"
+
+[LOGS]
+    Level = "debug"
+    OutputLogsAsJson = false
+
+[DATABASE]
+    Uri = "mongodb://cidgravity_backend:4MN7aWYTv5ZxwO@localhost:27017"
+    Database = "cidgravity"
+    ConnectionTimeout = "10s"
+    MaxConnection = 20
+    MaxPoolSize = 20
+    RequestTimeout = "300s"
+    SlowThresholdLogs = "1ms"
+    CollectionName = "exchanges_ticker"
+    
+[EXCHANGE]
+    PairsToFetch = ["FIL_USD"]
+    FetchPeriod = "60s"
