@@ -30,7 +30,7 @@
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone https://github.com/CIDgravity/Ticker.git
+git clone https://github.com/CIDgravity/CIDgravity-Ticker.git
 cd ticker
 ```
 
