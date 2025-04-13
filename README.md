@@ -1,4 +1,4 @@
-# 🚀 Crypto Ticker Aggregator API
+# Ticker
 
 [![Build project](https://github.com/CIDgravity/CIDgravity-Ticker/actions/workflows/build-project.yml/badge.svg)](https://github.com/CIDgravity/CIDgravity-Ticker/actions/workflows/build-project.yml)  [![Deploy API docs](https://github.com/CIDgravity/CIDgravity-Ticker/actions/workflows/build-docs.yml/badge.svg)](https://github.com/CIDgravity/CIDgravity-Ticker/actions/workflows/build-docs.yml)
 
@@ -50,12 +50,12 @@ cp config/config.toml.sample ./config.toml
 make build
 ```
 
-This will produce the `cidgravity-ticker` binary in the root of the project.
+This will produce the `ticker` binary in the `bin` folder.
 
 ### 4️⃣ Run the application
 
 ```bash
-./cidgravity-ticker --config path/to/config.toml
+./bin/ticker --config config.toml
 ```
 
 > If you run the binary from the same directory as your config, the `--config` flag is optional.
@@ -64,12 +64,18 @@ This will produce the `cidgravity-ticker` binary in the root of the project.
 
 ## 🧪 Development Tools
 
-| Command         | Description                     |
-|----------------|---------------------------------|
-| `make test`     | Run unit tests                  |
-| `make lint`     | Execute linters                 |
-| `make openapi`  | Build OpenAPI documentation     |
-| `make build`    | Compile the application binary  |
+| Command               | Description                                                           |
+|-----------------------|-----------------------------------------------------------------------|
+| `make test`           | Run unit tests                                                        |
+| `make test-coverage`  | Run unit tests with coverage                                          |
+| `make lint`           | Execute linters                                                       |
+| `make openapi`        | Build OpenAPI documentation                                           |
+| `make audit`          | Execute code quality checks                                           |
+| `make tidy`           | Download dependencies                                                 |
+| `make vendor`         | Download packages required to support builds and tests in the /vendor |
+| `make clean`          | Clean binary and generated files                                      |
+| `make build`          | Build the go application                                              |
+| `make coverage`       | Displays test coverage report in html mode                            |
 
 ---
 
@@ -115,7 +121,7 @@ Generate it locally with:
 make openapi
 ```
 
-Or view the hosted version: [📘 API Docs](#)
+Or view the hosted version: [📘 API Docs](https://cidgravity.github.io/CIDgravity-Ticker/)
 
 ---
 
