@@ -1,5 +1,7 @@
 # 🚀 Crypto Ticker Aggregator API
 
+[![Build project](https://github.com/CIDgravity/CIDgravity-Ticker/actions/workflows/build-project.yml/badge.svg)](https://github.com/CIDgravity/CIDgravity-Ticker/actions/workflows/build-project.yml)  [![Deploy API docs](https://github.com/CIDgravity/CIDgravity-Ticker/actions/workflows/build-docs.yml/badge.svg)](https://github.com/CIDgravity/CIDgravity-Ticker/actions/workflows/build-docs.yml)
+
 **Ticker** is a fast and extensible Go-based API that fetches cryptocurrency ticker data from multiple exchanges and stores it in a MongoDB database.  
 
 ---
