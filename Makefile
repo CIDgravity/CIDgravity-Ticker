@@ -27,6 +27,11 @@ test:
 clean:
 	rm -f $(BIN_NAME)
 
+# Build openapi docs
+.PHONE: openapi
+openapi:
+	redocly build-docs openapi.json --output docs/index.html
+
 # Run lint, build, and test in sequence
 .PHONY: all
 all: lint build test
