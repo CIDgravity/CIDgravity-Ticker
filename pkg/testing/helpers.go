@@ -9,12 +9,16 @@ import (
 	"testing"
 )
 
-func NewMockExchange(t *testing.T, jsonResponse string) *httptest.Server {
+func NewMockExchange(t *testing.T, jsonResponse string, statusCode int) *httptest.Server {
 	t.Helper()
 
 	return httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		fmt.Fprint(w, jsonResponse)
+		w.WriteHeader(statusCode)
+
+		if _, err := fmt.Fprint(w, jsonResponse); err != nil {
+			t.Errorf("failed to write response: %v", err)
+		}
 	}))
 }
 

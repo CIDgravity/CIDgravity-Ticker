@@ -3,6 +3,7 @@ package gemini
 import (
 	"fmt"
 	"strconv"
+	"strings"
 
 	"github.com/CIDgravity/Ticker/config"
 	"github.com/CIDgravity/Ticker/internal/exchange"
@@ -15,30 +16,48 @@ type Gemini struct {
 
 // MarketData represents the JSON structure
 type GeminiResponse struct {
-	Symbol  string   `json:"symbol"`
-	Open    string   `json:"open"`
-	High    string   `json:"high"`
-	Low     string   `json:"low"`
-	Close   string   `json:"close"`
-	Changes []string `json:"changes"`
-	Bid     string   `json:"bid"`
-	Ask     string   `json:"ask"`
+	Bid    string         `json:"bid"`
+	Ask    string         `json:"ask"`
+	Last   string         `json:"last"`
+	Volume map[string]any `json:"volume"` // contain the sell and ask currency + timestamp
 }
 
 func (r GeminiResponse) ToUnifiedResponse(exchangeName string, configPair string) (exchange.ExchangeFetchResponseForPair, error) {
-	bidPrice, err := strconv.ParseFloat(r.Bid, 32)
+	bidPrice, err := strconv.ParseFloat(r.Bid, 64)
 	if err != nil {
 		return exchange.ExchangeFetchResponseForPair{}, err
 	}
 
-	askPrice, err := strconv.ParseFloat(r.Ask, 32)
+	askPrice, err := strconv.ParseFloat(r.Ask, 64)
+	if err != nil {
+		return exchange.ExchangeFetchResponseForPair{}, err
+	}
+
+	// extract the volume from config pair
+	// this will extract sell and ask symbols (because configPair is formatted SELL_ASK string)
+	configPairSplitted := strings.Split(configPair, "_")
+	if len(configPairSplitted) < 2 {
+		return exchange.ExchangeFetchResponseForPair{}, fmt.Errorf("invalid config pair")
+	}
+
+	volumeSell, ok := r.Volume[configPairSplitted[0]]
+	if !ok {
+		return exchange.ExchangeFetchResponseForPair{}, fmt.Errorf("volume not found")
+	}
+
+	volumeSellStr, ok := volumeSell.(string)
+	if !ok {
+		return exchange.ExchangeFetchResponseForPair{}, fmt.Errorf("invalid volume found")
+	}
+
+	volumeSellFloat, err := strconv.ParseFloat(volumeSellStr, 64)
 	if err != nil {
 		return exchange.ExchangeFetchResponseForPair{}, err
 	}
 
 	return exchange.ExchangeFetchResponseForPair{
 		Price:  (bidPrice + askPrice) / 2,
-		Volume: 0.0,
+		Volume: volumeSellFloat,
 	}, nil
 }
 
@@ -46,7 +65,7 @@ func New() *Gemini {
 	return &Gemini{
 		config: exchange.ExchangeConfig{
 			Name:     "Gemini",
-			Endpoint: "https://api.gemini.com/v2/ticker",
+			Endpoint: "https://api.gemini.com/v1/pubticker",
 			Timeout:  "15s",
 		},
 	}
@@ -55,7 +74,7 @@ func New() *Gemini {
 // SetEndpoint update the endpoint (used for testing purposes)
 // Must not contains the ending slash
 func (x *Gemini) SetBaseUrl(baseUrl string) {
-	x.config.Endpoint = baseUrl + "/v2/ticker"
+	x.config.Endpoint = baseUrl + "/v1/pubticker"
 }
 
 // GetName return exchange name

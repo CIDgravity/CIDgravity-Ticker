@@ -1,18 +1,16 @@
-# Define the Go binary name
 BIN_NAME=cidgravity-ticker
-
-# Go-related variables
 GO=go
 GOLINT=golangci-lint
 GOTEST=go test -v
 GOBUILD=go build
 
-# Lint the code
+# Lint
 .PHONY: lint
 lint:
+	go vet ./...
 	$(GOLINT) run
 
-# Build the project
+# Build
 .PHONY: build
 build:
 	$(GOBUILD) -o $(BIN_NAME)
@@ -22,7 +20,18 @@ build:
 test:
 	$(GOTEST) ./...
 
-# Clean up built files
+test_coverage:
+	go test ./... -coverprofile=coverage.out
+
+# Deps download
+dep:
+	go mod download
+
+# Run
+run: build
+	./${BIN_NAME}
+
+# Clean
 .PHONY: clean
 clean:
 	rm -f $(BIN_NAME)
@@ -32,6 +41,6 @@ clean:
 openapi:
 	redocly build-docs openapi.json --output docs/index.html
 
-# Run lint, build, and test in sequence
+# All targets
 .PHONY: all
 all: lint build test

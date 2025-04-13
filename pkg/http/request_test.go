@@ -100,7 +100,10 @@ func TestExecuteRequest(t *testing.T) {
 	t.Run("timeout", func(t *testing.T) {
 		server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			time.Sleep(2 * time.Second)
-			w.Write([]byte(`{"message": "slow"}`))
+
+			if _, err := w.Write([]byte(`{"message": "slow"}`)); err != nil {
+				t.Errorf("failed to write response: %v", err)
+			}
 		}))
 		defer server.Close()
 
@@ -119,7 +122,9 @@ func TestExecuteRequest(t *testing.T) {
 		}
 		expected := testData{Name: "JohnDoe"}
 		server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			json.NewEncoder(w).Encode(expected)
+			if err := json.NewEncoder(w).Encode(expected); err != nil {
+				t.Errorf("failed to encode response: %v", err)
+			}
 		}))
 		defer server.Close()
 

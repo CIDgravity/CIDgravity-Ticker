@@ -36,7 +36,7 @@ func TestConfig(t *testing.T) {
 		require.Error(t, err)
 
 		assert.Nil(t, conf)
-		assert.Contains(t, err.Error(), "Error while loading configuration file")
+		assert.Contains(t, err.Error(), "error while loading configuration file")
 	})
 
 	t.Run("success", func(t *testing.T) {

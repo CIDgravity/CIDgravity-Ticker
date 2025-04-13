@@ -117,7 +117,7 @@ func Connect(config Config) (*mongo.Database, error) {
 				logs.Warning(logs.LogParams{
 					Message: "MongoDB slow request detected",
 					Params: map[string]interface{}{
-						"durationInMs": strconv.FormatInt(e.DurationNanos/1000000, 10),
+						"durationInMs": strconv.FormatInt(e.Duration.Nanoseconds()/1000000, 10),
 					},
 				})
 			}

@@ -38,6 +38,11 @@ func (r KrakenResponse) ToUnifiedResponse(exchangeName string, configPair, excha
 		return exchange.ExchangeFetchResponseForPair{}, fmt.Errorf("pair not found in response")
 	}
 
+	// validate response (only for variables used at this time)
+	if len(result.Ask) < 3 || len(result.Bid) > 3 {
+		return exchange.ExchangeFetchResponseForPair{}, fmt.Errorf("invalid values: expect 3 elements for bid and ask")
+	}
+
 	// parse string values to float for calculation
 	askPrice, err := strconv.ParseFloat(result.Ask[0], 64)
 	if err != nil {

@@ -69,7 +69,7 @@ func (x *Bitfinex) Fetch(pair string) (exchange.ExchangeFetchResponseForPair, er
 	// Bitfinex doesn't store in JSON struct, but only using array indexes
 	// We need to remap to struct before converted to unified response
 	if resp == nil || len(*resp) < 10 {
-		return exchange.ExchangeFetchResponseForPair{}, fmt.Errorf("invalid response from Bitfinex")
+		return exchange.ExchangeFetchResponseForPair{}, fmt.Errorf("invalid response from Bitfinex: expect 10 values")
 	}
 
 	bitfinexResponse := *resp

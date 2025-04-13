@@ -73,7 +73,7 @@ func NewConfigFromFile(configDir string, fileName string) (*Config, error) {
 	_, err := snakelet.InitAndLoad(conf, configFilePath)
 
 	if err != nil {
-		return nil, fmt.Errorf("Error while loading configuration file")
+		return nil, fmt.Errorf("error while loading configuration file")
 	}
 
 	return conf, nil

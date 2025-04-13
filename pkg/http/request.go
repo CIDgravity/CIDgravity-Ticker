@@ -95,7 +95,10 @@ func ExecuteRequest[T any](URL string, timeout string) (*T, error) {
 	}
 
 	// Read the response if needed
-	defer resp.Body.Close()
+	defer func() {
+		err = resp.Body.Close()
+	}()
+
 	response, err := ReadResponse[T](resp)
 
 	if err != nil {
