@@ -1,9 +1,10 @@
 name: Deploy API docs
 
 on:
-  push:
-    branches: ["main"]
-  workflow_dispatch:
+  workflow_run:
+    workflows: ["Build project"]
+    types:
+      - completed
 
 permissions:
   contents: read
@@ -33,6 +34,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './docs/'
-      - name: Deploy to GitHub Pages
+      - name: Deploy to pages
         id: deployment
         uses: actions/deploy-pages@v4
