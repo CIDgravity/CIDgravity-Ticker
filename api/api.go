@@ -1,4 +1,4 @@
-package ticker
+package api
 
 import (
 	"net/http"
@@ -22,7 +22,7 @@ import (
 	"github.com/go-co-op/gocron"
 )
 
-func SetupAPI(config config.Config, dB *mongo.Database) *http.Server {
+func Setup(config config.Config, dB *mongo.Database) *http.Server {
 	logs.Info(logs.LogParams{
 		Message: "Setup all REST API endpoints ...",
 	})

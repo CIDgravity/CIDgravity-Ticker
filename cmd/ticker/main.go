@@ -1,4 +1,4 @@
-package ticker
+package main
 
 import (
 	"context"
@@ -14,6 +14,7 @@ import (
 
 	"github.com/urfave/cli/v2"
 
+	"github.com/CIDgravity/Ticker/api"
 	"github.com/CIDgravity/Ticker/config"
 	"github.com/CIDgravity/Ticker/pkg/database/mongo"
 	logs "github.com/CIDgravity/Ticker/pkg/logger"
@@ -21,7 +22,7 @@ import (
 
 var version = "dev"
 
-func Execute() {
+func main() {
 	app := &cli.App{
 		Name:     "Ticker",
 		Version:  version,
@@ -114,7 +115,7 @@ func runTicker(configPath string) {
 	logs.InitLogger(conf.Logs.Level, conf.Logs.OutputLogsAsJson)
 
 	// Setup API servers and Cron jobs
-	APIServer := SetupAPI(*conf, db)
+	APIServer := api.Setup(*conf, db)
 
 	// Start the server with the configuration
 	go func() {

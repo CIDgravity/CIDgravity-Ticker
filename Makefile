@@ -1,46 +1,58 @@
-BIN_NAME=cidgravity-ticker
-GO=go
-GOLINT=golangci-lint
-GOTEST=go test -v
-GOBUILD=go build
+# Variables
+main_path = ./cmd/ticker/main.go
+binary = ticker
 
-# Lint
-.PHONY: lint
-lint:
-	go vet ./...
-	$(GOLINT) run
+# Get current git tag or commit hash for binary version
+VERSION := $(shell scripts/get-git-tag-or-hash.sh)
 
-# Build
-.PHONY: build
-build:
-	$(GOBUILD) -o $(BIN_NAME)
+# Use linker flags to provide version/build settings
+LDFLAGS=-ldflags "-X=main.version=$(VERSION)"
 
-# Run tests
-.PHONY: test
-test:
-	$(GOTEST) ./...
+all: audit build
 
-test_coverage:
-	go test ./... -coverprofile=coverage.out
+build: ## build the go application
+	make clean
+	make tidy
+	mkdir -p bin/
+	go build $(LDFLAGS) -o bin/${binary} ${main_path}
 
-# Deps download
-dep:
+tidy: ## download dependencies
+	go mod tidy
 	go mod download
 
-# Run
-run: build
-	./${BIN_NAME}
+test-coverage: ## runs tests and create generates coverage report
+	make tidy
+	make vendor
+	mkdir -p tmp/
+	go test -v -timeout 10m ./... -coverprofile=tmp/coverage.out -json > tmp/report.json
 
-# Clean
-.PHONY: clean
-clean:
-	rm -f $(BIN_NAME)
+test: ## runs tests
+	make tidy
+	make vendor
+	go test -v -timeout 10m ./...
 
-# Build openapi docs
-.PHONE: openapi
-openapi:
+audit: ## runs code quality checks
+	go mod verify
+	go fmt ./...
+	go vet ./...
+	go run honnef.co/go/tools/cmd/staticcheck@latest -checks=all,-ST1000,-U1000 ./...
+	go run golang.org/x/vuln/cmd/govulncheck@latest ./...
+
+clean: ## cleans binary and other generated files
+	go clean
+	rm -f tmp/coverage.out tmp/report.json bin/${binary}
+
+lint: ## go linting
+	make tidy
+	golangci-lint run
+
+coverage: ## displays test coverage report in html mode
+	make test
+	go tool cover -html=tmp/coverage.out
+
+openapi: # Build openapi docs
 	redocly build-docs openapi.json --output docs/index.html
 
-# All targets
-.PHONY: all
-all: lint build test
+.PHONY: vendor
+vendor: ## all packages required to support builds and tests in the /vendor directory
+	go mod vendor
