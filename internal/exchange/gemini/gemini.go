@@ -14,7 +14,7 @@ type Gemini struct {
 	config exchange.ExchangeConfig
 }
 
-// MarketData represents the JSON structure
+// GeminiResponse MarketData represents the JSON structure
 type GeminiResponse struct {
 	Bid    string         `json:"bid"`
 	Ask    string         `json:"ask"`
@@ -71,10 +71,10 @@ func New() *Gemini {
 	}
 }
 
-// SetEndpoint update the endpoint (used for testing purposes)
+// SetBaseURL update the endpoint (used for testing purposes)
 // Must not contains the ending slash
-func (x *Gemini) SetBaseUrl(baseUrl string) {
-	x.config.Endpoint = baseUrl + "/v1/pubticker"
+func (x *Gemini) SetBaseURL(baseURL string) {
+	x.config.Endpoint = baseURL + "/v1/pubticker"
 }
 
 // GetName return exchange name

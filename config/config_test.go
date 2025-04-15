@@ -16,7 +16,7 @@ func TestConfig(t *testing.T) {
 
 		assert.Equal(t, "5000", conf.API.ListenPort)
 		assert.Equal(t, "debug", conf.Logs.Level)
-		assert.False(t, conf.Logs.OutputLogsAsJson)
+		assert.False(t, conf.Logs.OutputLogsAsJSON)
 		assert.Equal(t, []string{"FIL_USD"}, conf.Exchange.PairsToFetch)
 		assert.Equal(t, "60s", conf.Exchange.FetchPeriod)
 		assert.Equal(t, 6, conf.Exchange.MaxParallelExchangesToFetch)
@@ -47,7 +47,7 @@ func TestConfig(t *testing.T) {
 
 		assert.Equal(t, "8080", conf.API.ListenPort)
 		assert.Equal(t, "error", conf.Logs.Level)
-		assert.True(t, conf.Logs.OutputLogsAsJson)
+		assert.True(t, conf.Logs.OutputLogsAsJSON)
 		assert.Equal(t, []string{"FIL_USD"}, conf.Exchange.PairsToFetch)
 		assert.Equal(t, "60s", conf.Exchange.FetchPeriod)
 		assert.Equal(t, "10s", conf.Database.ConnectionTimeout)

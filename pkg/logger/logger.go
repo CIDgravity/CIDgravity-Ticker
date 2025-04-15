@@ -56,9 +56,9 @@ func (f *StackFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 
 var logger = logrus.New()
 
-func InitLogger(level string, outputAsJson bool) *logrus.Logger {
+func InitLogger(level string, outputAsJSON bool) *logrus.Logger {
 
-	if outputAsJson {
+	if outputAsJSON {
 		logger.SetFormatter(&logrus.JSONFormatter{
 			FieldMap: logrus.FieldMap{
 				logrus.FieldKeyTime:  "timestamp",

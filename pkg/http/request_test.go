@@ -13,9 +13,9 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestCreateHttpRequestAndClient(t *testing.T) {
+func TestCreateHTTPRequestAndClient(t *testing.T) {
 	t.Run("invalid_method", func(t *testing.T) {
-		_, _, err := internalHttp.CreateHttpRequestAndClient(internalHttp.Request{
+		_, _, err := internalHttp.CreateHTTPRequestAndClient(internalHttp.Request{
 			Method:         "",
 			URL:            "http://example.com",
 			RequestTimeout: "1s",
@@ -24,7 +24,7 @@ func TestCreateHttpRequestAndClient(t *testing.T) {
 	})
 
 	t.Run("invalid_timeout", func(t *testing.T) {
-		_, _, err := internalHttp.CreateHttpRequestAndClient(internalHttp.Request{
+		_, _, err := internalHttp.CreateHTTPRequestAndClient(internalHttp.Request{
 			Method:         "GET",
 			URL:            "http://example.com",
 			RequestTimeout: "not-a-duration",
@@ -33,7 +33,7 @@ func TestCreateHttpRequestAndClient(t *testing.T) {
 	})
 
 	t.Run("valid_no_auth", func(t *testing.T) {
-		client, req, err := internalHttp.CreateHttpRequestAndClient(internalHttp.Request{
+		client, req, err := internalHttp.CreateHTTPRequestAndClient(internalHttp.Request{
 			Method:         "GET",
 			URL:            "http://example.com",
 			RequestTimeout: "2s",
@@ -46,7 +46,7 @@ func TestCreateHttpRequestAndClient(t *testing.T) {
 
 	t.Run("valid_with_auth", func(t *testing.T) {
 		token := "Bearer foobar"
-		_, req, err := internalHttp.CreateHttpRequestAndClient(internalHttp.Request{
+		_, req, err := internalHttp.CreateHTTPRequestAndClient(internalHttp.Request{
 			Method:         "GET",
 			URL:            "http://example.com",
 			APIToken:       &token,

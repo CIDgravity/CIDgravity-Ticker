@@ -30,7 +30,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		cexExchange := cex.New()
-		cexExchange.SetBaseUrl(mockServer.URL)
+		cexExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := cexExchange.Fetch(pair)
 		require.Error(t, err)
@@ -54,7 +54,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		cexExchange := cex.New()
-		cexExchange.SetBaseUrl(mockServer.URL)
+		cexExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := cexExchange.Fetch(pair)
 		require.Error(t, err)
@@ -78,7 +78,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		cexExchange := cex.New()
-		cexExchange.SetBaseUrl(mockServer.URL)
+		cexExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := cexExchange.Fetch(pair)
 		require.Error(t, err)
@@ -94,7 +94,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		cexExchange := cex.New()
-		cexExchange.SetBaseUrl(mockServer.URL)
+		cexExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := cexExchange.Fetch(pair)
 		require.Error(t, err)
@@ -135,7 +135,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		cexExchange := cex.New()
-		cexExchange.SetBaseUrl(mockServer.URL)
+		cexExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := cexExchange.Fetch(pair)
 		require.NoError(t, err)

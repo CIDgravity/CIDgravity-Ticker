@@ -17,7 +17,7 @@ type CryptoResponse struct {
 	Result CryptoResult `json:"result"`
 }
 
-// Tick represents the detailed market data
+// CryptoResult represents the detailed market data
 type CryptoResult struct {
 	Data []CryptoData `json:"data"`
 }
@@ -70,10 +70,10 @@ func New() *Crypto {
 	}
 }
 
-// SetEndpoint update the endpoint (used for testing purposes)
+// SetBaseURL update the endpoint (used for testing purposes)
 // Must not contains the ending slash
-func (x *Crypto) SetBaseUrl(baseUrl string) {
-	x.config.Endpoint = baseUrl + "/exchange/v1/public/get-tickers"
+func (x *Crypto) SetBaseURL(baseURL string) {
+	x.config.Endpoint = baseURL + "/exchange/v1/public/get-tickers"
 }
 
 // GetName return exchange name

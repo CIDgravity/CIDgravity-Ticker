@@ -23,7 +23,7 @@ type APIConfig struct {
 
 type LogsConfig struct {
 	Level            string `mapstructure:"Level"` // error | warn | info - case insensitive
-	OutputLogsAsJson bool   `mapstructure:"OutputLogsAsJson"`
+	OutputLogsAsJSON bool   `mapstructure:"OutputLogsAsJSON"`
 }
 
 type ExchangeConfig struct {
@@ -39,7 +39,7 @@ func GetDefaultConfig() *Config {
 		},
 		Logs: LogsConfig{
 			Level:            "debug",
-			OutputLogsAsJson: false,
+			OutputLogsAsJSON: false,
 		},
 		Database: mongo.Config{
 			ConnectionTimeout: "10s",

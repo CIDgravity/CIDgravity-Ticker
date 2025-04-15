@@ -82,10 +82,10 @@ func New() *Kraken {
 	}
 }
 
-// SetEndpoint update the endpoint (used for testing purposes)
+// SetBaseURL update the endpoint (used for testing purposes)
 // Must not contains the ending slash
-func (x *Kraken) SetBaseUrl(baseUrl string) {
-	x.config.Endpoint = baseUrl + "/0/public/Ticker"
+func (x *Kraken) SetBaseURL(baseURL string) {
+	x.config.Endpoint = baseURL + "/0/public/Ticker"
 }
 
 // GetName return exchange name

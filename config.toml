@@ -3,10 +3,10 @@
 
 [LOGS]
     Level = "debug"
-    OutputLogsAsJson = false
+    OutputLogsAsJSON = false
 
 [DATABASE]
-    Uri = "mongodb://cidgravity_backend:4MN7aWYTv5ZxwO@localhost:27017"
+    URI = "mongodb://cidgravity_backend:4MN7aWYTv5ZxwO@localhost:27017"
     Database = "cidgravity"
     ConnectionTimeout = "10s"
     MaxConnection = 20

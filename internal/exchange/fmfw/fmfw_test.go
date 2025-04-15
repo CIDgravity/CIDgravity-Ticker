@@ -22,7 +22,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		fmfwExchange := fmfw.New()
-		fmfwExchange.SetBaseUrl(mockServer.URL)
+		fmfwExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := fmfwExchange.Fetch(pair)
 		require.Error(t, err)
@@ -43,7 +43,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		fmfwExchange := fmfw.New()
-		fmfwExchange.SetBaseUrl(mockServer.URL)
+		fmfwExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := fmfwExchange.Fetch(pair)
 		require.Error(t, err)
@@ -64,7 +64,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		fmfwExchange := fmfw.New()
-		fmfwExchange.SetBaseUrl(mockServer.URL)
+		fmfwExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := fmfwExchange.Fetch(pair)
 		require.Error(t, err)
@@ -80,7 +80,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		fmfwExchange := fmfw.New()
-		fmfwExchange.SetBaseUrl(mockServer.URL)
+		fmfwExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := fmfwExchange.Fetch(pair)
 		require.Error(t, err)
@@ -109,7 +109,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		fmfwExchange := fmfw.New()
-		fmfwExchange.SetBaseUrl(mockServer.URL)
+		fmfwExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := fmfwExchange.Fetch(pair)
 		require.NoError(t, err)

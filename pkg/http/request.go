@@ -16,11 +16,11 @@ type Request struct {
 	RequestTimeout string
 }
 
-func CreateHttpRequestAndClient(r Request) (http.Client, http.Request, error) {
-	validHttpMethods := []string{"POST", "GET", "DELETE", "PATCH"}
+func CreateHTTPRequestAndClient(r Request) (http.Client, http.Request, error) {
+	validHTTPMethods := []string{"POST", "GET", "DELETE", "PATCH"}
 
 	// valid http method provided
-	if !slices.Contains(validHttpMethods, r.Method) {
+	if !slices.Contains(validHTTPMethods, r.Method) {
 		return http.Client{}, http.Request{}, fmt.Errorf("invalid method")
 	}
 
@@ -77,7 +77,7 @@ func ReadResponse[T interface{}](response *http.Response) (*T, error) {
 }
 
 func ExecuteRequest[T any](URL string, timeout string) (*T, error) {
-	client, request, err := CreateHttpRequestAndClient(Request{
+	client, request, err := CreateHTTPRequestAndClient(Request{
 		Method:         "GET",
 		URL:            URL,
 		RequestTimeout: timeout,

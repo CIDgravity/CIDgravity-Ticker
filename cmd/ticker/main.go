@@ -106,13 +106,13 @@ func runTicker(configPath string) {
 			Error:      err,
 			Stacktrace: debug.Stack(),
 			Params: map[string]interface{}{
-				"DatabaseURI": conf.Database.Uri,
+				"DatabaseURI": conf.Database.URI,
 			},
 		})
 	}
 
 	// Init the logger that will be used in entire app
-	logs.InitLogger(conf.Logs.Level, conf.Logs.OutputLogsAsJson)
+	logs.InitLogger(conf.Logs.Level, conf.Logs.OutputLogsAsJSON)
 
 	// Setup API servers and Cron jobs
 	APIServer := api.Setup(*conf, db)
@@ -129,7 +129,7 @@ func runTicker(configPath string) {
 				Error:      err,
 				Stacktrace: debug.Stack(),
 				Params: map[string]interface{}{
-					"DatabaseURI": conf.Database.Uri,
+					"DatabaseURI": conf.Database.URI,
 				},
 			})
 		}

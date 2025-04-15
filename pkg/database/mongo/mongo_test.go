@@ -73,7 +73,7 @@ func TestGenerateMongoShRequestFromCommand(t *testing.T) {
 func TestConnect(t *testing.T) {
 	t.Run("invalid URI", func(t *testing.T) {
 		cfg := mongo.Config{
-			Uri:               "invalid://localhost",
+			URI:               "invalid://localhost",
 			Database:          "test",
 			ConnectionTimeout: "1s",
 			SlowThresholdLogs: "1ms",
@@ -97,7 +97,7 @@ func TestConnect(t *testing.T) {
 		}
 
 		cfg := mongo.Config{
-			Uri:               uri,
+			URI:               uri,
 			Database:          "test_db",
 			ConnectionTimeout: "2s",
 			SlowThresholdLogs: "5ms",

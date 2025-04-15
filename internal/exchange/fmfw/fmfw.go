@@ -65,10 +65,10 @@ func New() *FMFW {
 	}
 }
 
-// SetEndpoint update the endpoint (used for testing purposes)
+// SetBaseURL update the endpoint (used for testing purposes)
 // Must not contains the ending slash
-func (x *FMFW) SetBaseUrl(baseUrl string) {
-	x.config.Endpoint = baseUrl + "/3/public/ticker"
+func (x *FMFW) SetBaseURL(baseURL string) {
+	x.config.Endpoint = baseURL + "/3/public/ticker"
 }
 
 // GetName return exchange name

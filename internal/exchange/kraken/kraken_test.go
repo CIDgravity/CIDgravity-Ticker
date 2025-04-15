@@ -31,7 +31,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		krakenExchange := kraken.New()
-		krakenExchange.SetBaseUrl(mockServer.URL)
+		krakenExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := krakenExchange.Fetch(pair)
 		require.Error(t, err)
@@ -56,7 +56,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		krakenExchange := kraken.New()
-		krakenExchange.SetBaseUrl(mockServer.URL)
+		krakenExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := krakenExchange.Fetch(pair)
 		require.Error(t, err)
@@ -72,7 +72,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		krakenExchange := kraken.New()
-		krakenExchange.SetBaseUrl(mockServer.URL)
+		krakenExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := krakenExchange.Fetch(pair)
 		require.Error(t, err)
@@ -104,7 +104,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		krakenExchange := kraken.New()
-		krakenExchange.SetBaseUrl(mockServer.URL)
+		krakenExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := krakenExchange.Fetch(pair)
 		require.NoError(t, err)

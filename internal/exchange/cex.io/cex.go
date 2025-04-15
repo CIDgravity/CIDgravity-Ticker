@@ -77,10 +77,10 @@ func New() *CEX {
 	}
 }
 
-// SetEndpoint update the endpoint (used for testing purposes)
+// SetBaseURL update the endpoint (used for testing purposes)
 // Must not contains the ending slash
-func (x *CEX) SetBaseUrl(baseUrl string) {
-	x.config.Endpoint = baseUrl + "/api/spot/rest-public/get_ticker"
+func (x *CEX) SetBaseURL(baseURL string) {
+	x.config.Endpoint = baseURL + "/api/spot/rest-public/get_ticker"
 }
 
 // GetName return exchange name

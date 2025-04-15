@@ -1,6 +1,8 @@
 module github.com/CIDgravity/Ticker
 
-go 1.23.7
+go 1.23
+
+toolchain go1.23.8
 
 require (
 	github.com/CIDgravity/gormv2-logrus-fork v1.3.1

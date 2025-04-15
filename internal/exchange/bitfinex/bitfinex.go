@@ -42,10 +42,10 @@ func New() *Bitfinex {
 	}
 }
 
-// SetEndpoint update the endpoint (used for testing purposes)
+// SetBaseURL update the endpoint (used for testing purposes)
 // Must not contains the ending slash
-func (x *Bitfinex) SetBaseUrl(baseUrl string) {
-	x.config.Endpoint = baseUrl + "/v2/ticker"
+func (x *Bitfinex) SetBaseURL(baseURL string) {
+	x.config.Endpoint = baseURL + "/v2/ticker"
 }
 
 // GetName return exchange name

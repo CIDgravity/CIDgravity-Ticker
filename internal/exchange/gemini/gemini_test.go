@@ -32,7 +32,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		geminiExchange := gemini.New()
-		geminiExchange.SetBaseUrl(mockServer.URL)
+		geminiExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := geminiExchange.Fetch(pair)
 		require.Error(t, err)
@@ -58,7 +58,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		geminiExchange := gemini.New()
-		geminiExchange.SetBaseUrl(mockServer.URL)
+		geminiExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := geminiExchange.Fetch(pair)
 		require.Error(t, err)
@@ -85,7 +85,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		geminiExchange := gemini.New()
-		geminiExchange.SetBaseUrl(mockServer.URL)
+		geminiExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := geminiExchange.Fetch(pair)
 		require.Error(t, err)
@@ -102,7 +102,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		geminiExchange := gemini.New()
-		geminiExchange.SetBaseUrl(mockServer.URL)
+		geminiExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := geminiExchange.Fetch(pair)
 		require.Error(t, err)
@@ -128,7 +128,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		geminiExchange := gemini.New()
-		geminiExchange.SetBaseUrl(mockServer.URL)
+		geminiExchange.SetBaseURL(mockServer.URL)
 
 		// Mock the pair resolution
 		resp, err := geminiExchange.Fetch(pair)

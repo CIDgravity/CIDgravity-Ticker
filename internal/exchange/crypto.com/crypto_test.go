@@ -35,7 +35,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		cryptoExchange := crypto.New()
-		cryptoExchange.SetBaseUrl(mockServer.URL)
+		cryptoExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := cryptoExchange.Fetch(pair)
 		require.Error(t, err)
@@ -64,7 +64,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		cryptoExchange := crypto.New()
-		cryptoExchange.SetBaseUrl(mockServer.URL)
+		cryptoExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := cryptoExchange.Fetch(pair)
 		require.Error(t, err)
@@ -80,7 +80,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		cryptoExchange := crypto.New()
-		cryptoExchange.SetBaseUrl(mockServer.URL)
+		cryptoExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := cryptoExchange.Fetch(pair)
 		require.Error(t, err)
@@ -118,7 +118,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		cryptoExchange := crypto.New()
-		cryptoExchange.SetBaseUrl(mockServer.URL)
+		cryptoExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := cryptoExchange.Fetch(pair)
 		require.NoError(t, err)

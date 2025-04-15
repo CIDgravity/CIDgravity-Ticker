@@ -32,7 +32,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		bitfinexExchange := bitfinex.New()
-		bitfinexExchange.SetBaseUrl(mockServer.URL)
+		bitfinexExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := bitfinexExchange.Fetch(pair)
 		require.Error(t, err)
@@ -48,7 +48,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		bitfinexExchange := bitfinex.New()
-		bitfinexExchange.SetBaseUrl(mockServer.URL)
+		bitfinexExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := bitfinexExchange.Fetch(pair)
 		require.Error(t, err)
@@ -76,7 +76,7 @@ func TestFetchAndUnifiedResponse(t *testing.T) {
 		defer mockServer.Close()
 
 		bitfinexExchange := bitfinex.New()
-		bitfinexExchange.SetBaseUrl(mockServer.URL)
+		bitfinexExchange.SetBaseURL(mockServer.URL)
 
 		resp, err := bitfinexExchange.Fetch(pair)
 		require.NoError(t, err)

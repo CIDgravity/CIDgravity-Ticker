@@ -17,7 +17,7 @@ import (
 
 type Config struct {
 	SlowThresholdLogs string `mapstructure:"SlowThresholdLogs"` // Value under which a query is considered slow. "1ms", "1s", etc - anything that's parsable by time.ParseDuration(interval).
-	Uri               string `mapstructure:"Uri" validate:"required"`
+	URI               string `mapstructure:"URI" validate:"required"`
 	Database          string `mapstructure:"Database" validate:"required"`
 	ConnectionTimeout string `mapstructure:"ConnectionTimeout"`
 	MaxConnection     uint64 `mapstructure:"MaxConnection"`
@@ -130,7 +130,7 @@ func Connect(config Config) (*mongo.Database, error) {
 		SetMaxPoolSize(config.MaxPoolSize).
 		SetMonitor(mongoCommandMonitor)
 
-	client, err := mongo.Connect(ctx, opts.ApplyURI(config.Uri))
+	client, err := mongo.Connect(ctx, opts.ApplyURI(config.URI))
 
 	if err != nil {
 		logs.Error(logs.LogParams{
