@@ -19,6 +19,10 @@ jobs:
       - name: Run golangci-lint
         uses: golangci/golangci-lint-action@v3
 
+      - name: Run audit
+        run: |
+          make audit
+
       - name: Run Go tests
         run: |
           make test

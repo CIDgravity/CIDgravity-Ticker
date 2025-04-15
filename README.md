@@ -32,7 +32,7 @@
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone https://github.com/CIDgravity/CIDgravity-Ticker.git
+git clone https://github.com/CIDgravity/ticker.git
 cd ticker
 ```
 
@@ -121,7 +121,7 @@ Generate it locally with:
 make openapi
 ```
 
-Or view the hosted version: [📘 API Docs](https://cidgravity.github.io/CIDgravity-Ticker/)
+Or view the hosted version: [📘 API Docs](https://cidgravity.github.io/ticker/)
 
 ---
 
