@@ -1,7 +1,7 @@
 [API]
     # Port on which this service runs
-    # Default value = "4100"
-    # ListenPort = "4100"
+    # Default value = "5000"
+    # ListenPort = "5000"
 
 [LOGS]
     # Specific for application logs
@@ -46,7 +46,7 @@
     # Must be the same for all exchanges, will be converted individually in the codebase
     # Available values: FIL_USD
     # Default value = ["FIL_USD"]
-    PairsToFetch = ["FIL_USD"]
+    # PairsToFetch = ["FIL_USD"]
 
     # Duration between two fetches from each exchange for each pair
     # Default value = "60s"
